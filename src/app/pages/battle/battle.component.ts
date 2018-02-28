@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GifService } from '@app/core/services/gif.service';
+import { Gif } from '@app/models//gif.model';
+import { FlashMessagesService } from 'angular2-flash-messages';
 
 @Component({
   selector: 'app-battle',
@@ -8,46 +10,48 @@ import { GifService } from '@app/core/services/gif.service';
 
     <div class="columns" *ngIf="battleGifs">
       <div class="column is-half" *ngFor="let gif of battleGifs">
-        <div class="gif-container">
-          <figure class="image is-1by1">
-            <img [src]="gif.url" alt="{{ gif.caption }}">
-          </figure>
-          <div class="caption">{{ gif.caption }}</div>            
-        </div>
+        <app-gif
+          [url]="gif.url"
+          [caption]="gif.caption">
+        </app-gif>
+  
+        <a class="button is-info" (click)="voteOnGif(gif.id)">Vote!</a>
       </div>
     </div>
   `,
-  styles: [`
-  
-    .gif-container {
-      position: relative;
-    }
-  
-    .caption {
-      display: block;
-      position: absolute;
-      left: 20px;
-      right: 20px;
-      bottom: 20px;
-      text-align: center;
-      color: #fff;
-      font-size: 28px;
-      text-transform: uppercase;
-      line-height: 1;
-      word-break: break-all;
-      text-shadow: 1px 1px 3px #000;
-    }
-    `]
+  styles: [``]
 })
 export class BattleComponent implements OnInit {
-  battleGifs: Array<any>;
+  battleGifs: Gif[];
 
 
-  constructor(private gifService: GifService) { }
+  constructor(
+    private gifService: GifService,
+    private flashService: FlashMessagesService
+  ) { }
 
   ngOnInit() {
+    this.getNewBattle();
+  }
+
+  getNewBattle() {
     this.gifService.getBattle()
       .subscribe(gifs => this.battleGifs = gifs);
+  }
+
+  voteOnGif(id) {
+    this.gifService.vote(id)
+      .subscribe(data => {
+        // load a new data
+        this.getNewBattle();
+
+        // show a notification of success
+        this.flashService.show('Voted on gif!', {
+          cssClass: 'notification is-success',
+          timeout: 3000
+        });
+
+      });
   }
 
 }

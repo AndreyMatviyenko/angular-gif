@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GifService } from "@app/core/services/gif.service";
+import { Gif } from '@app/models//gif.model';
+import { FlashMessagesService } from 'angular2-flash-messages';
 
 @Component({
   selector: 'app-create',
@@ -9,12 +11,12 @@ import { GifService } from "@app/core/services/gif.service";
     </h1>
 
     <div class="box">
-      <div class="gif-container" *ngIf="randomGif">
-        <figure class="image is-1by1">
-          <img [src]="randomGif.url" alt="{{ caption }}">
-        </figure>
-        <div class="caption">{{ caption }}</div>
-      </div>
+      
+      <app-gif
+        *ngIf="randomGif"
+        [url]="randomGif.url"
+        [caption]="caption">
+      </app-gif>
       
       <div class="field">
         <input type="text" class="input" [(ngModel)]="caption">
@@ -32,25 +34,6 @@ import { GifService } from "@app/core/services/gif.service";
       margin: 0 auto;
     }
 
-    .gif-container {
-      position: relative;
-    }
-
-    .caption {
-      display: block;
-      position: absolute;
-      left: 20px;
-      right: 20px;
-      bottom: 20px;
-      text-align: center;
-      color: #fff;
-      font-size: 28px;
-      text-transform: uppercase;
-      line-height: 1;
-      word-break: break-all;
-      text-shadow: 1px 1px 3px #000;
-    }
-
     .button {
       display: block;
       width: 100%
@@ -64,10 +47,13 @@ import { GifService } from "@app/core/services/gif.service";
   `]
 })
 export class CreateComponent implements OnInit {
-  randomGif;
+  randomGif: Gif;
   caption = '';
 
-  constructor(private gifService: GifService) { }
+  constructor(
+    private gifService: GifService,
+    private flashService: FlashMessagesService
+  ) { }
 
   ngOnInit() {
     this.getRandomGif();
@@ -90,6 +76,10 @@ export class CreateComponent implements OnInit {
         this.caption = '';
 
         // show a notification of success
+        this.flashService.show('Created a new gif!', {
+          cssClass: 'notification is-success',
+          timeout: 3000
+        });
       });
   }
 
