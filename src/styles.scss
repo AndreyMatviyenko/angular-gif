@@ -35,3 +35,55 @@ main.hero {
     display: block;
     z-index: 999;
 }
+
+.leader__list {
+    position: relative;
+    overflow: hidden;
+    li {
+        float: left;
+        width: 33.3333%;
+        padding: 15px;
+        img {
+            border-radius: 30%;
+            transition: all .3s ease;
+        }
+        &:hover, &:focus {
+            img {
+                border-radius: 0;
+            }
+        }
+    }
+}
+
+.battle__wrap {
+    .battle__wrap--gif {
+        position: relative;
+        img {
+            border-radius: 10px;
+        }
+        .button {
+            position: absolute;
+            padding: 0;
+            top: 50%;
+            left: 50%;
+            width: 100px;
+            height: 100px;
+            margin-left: -50px;
+            margin-top: -50px;
+            font-size: 44px;
+            line-height: 100px;
+            border-radius: 50%;
+            opacity: 0.9;
+            display: none;
+            &:hover {
+                opacity: 1;
+                color: #7d469a;
+            }
+        }
+        &:hover {
+            .button {
+                display: block;
+            }
+        }
+    }
+}

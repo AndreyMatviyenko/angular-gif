@@ -6,7 +6,7 @@ import { GifService } from '@app/core/services/gif.service';
   selector: 'app-leaderboard',
   template: `
     <h1 class="title has-text-centered">Leaderboard</h1>
-    <ol *ngIf="leaderboardGifs">
+    <ol class="leader__list" *ngIf="leaderboardGifs">
       <li *ngFor="let gif of leaderboardGifs; let i = index">
         <app-gif [url]="gif.url" [caption]="gif.caption"></app-gif>
         <b>{{ gif.votes }}</b>

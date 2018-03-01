@@ -8,14 +8,14 @@ import { FlashMessagesService } from 'angular2-flash-messages';
   template: `
     <h1 class="title has-text-centered">Battle!</h1>
 
-    <div class="columns" *ngIf="battleGifs">
-      <div class="column is-half" *ngFor="let gif of battleGifs">
+    <div class="columns battle__wrap" *ngIf="battleGifs">
+      <div class="column is-half battle__wrap--gif" *ngFor="let gif of battleGifs">
         <app-gif
           [url]="gif.url"
           [caption]="gif.caption">
         </app-gif>
   
-        <a class="button is-info" (click)="voteOnGif(gif.id)">Vote!</a>
+        <a class="button" (click)="voteOnGif(gif.id)"><i class="fa fa-thumbs-up"></i></a>
       </div>
     </div>
   `,
