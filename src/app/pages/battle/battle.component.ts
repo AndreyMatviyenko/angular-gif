@@ -6,18 +6,24 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 @Component({
   selector: 'app-battle',
   template: `
-    <h1 class="title has-text-centered">Battle!</h1>
-
-    <div class="columns battle__wrap" *ngIf="battleGifs">
-      <div class="column is-half battle__wrap--gif" *ngFor="let gif of battleGifs">
-        <app-gif
-          [url]="gif.url"
-          [caption]="gif.caption">
-        </app-gif>
-  
-        <a class="button" (click)="voteOnGif(gif.id)"><i class="fa fa-thumbs-up"></i></a>
+  <main class="hero is-fullheight">
+    <div class="hero-body hero-battle">
+      <div class="container">
+        <h1 class="title has-text-centered">Battle!</h1>
+    
+        <div class="columns battle__wrap" *ngIf="battleGifs">
+          <img class="battle__wrap--vs" src="assets/img/vs.svg">
+          <div class="column is-half battle__wrap--gif" *ngFor="let gif of battleGifs">
+            <app-gif
+              [url]="gif.url"
+              [caption]="gif.caption">
+            </app-gif>
+            <a class="button" (click)="voteOnGif(gif.id)"><i class="fa fa-thumbs-up"></i></a>
+          </div>
+        </div>
       </div>
     </div>
+  </main>
   `,
   styles: [``]
 })

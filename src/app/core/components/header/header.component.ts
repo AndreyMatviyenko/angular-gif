@@ -3,10 +3,12 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-header',
   template: `
-  <nav class="navbar is-dark">
+  <nav class="main-header navbar is-fixed-top is-white">
     <div class="container">
       <div class="navbar-brand">
-        <a routerLink="/" class="navbar-item">Gifsta</a>
+        <a routerLink="/" class="navbar-item">
+          <img src="assets/img/logo.svg" width="60" height="60">
+        </a>
         <div class="navbar-burger">
           <span></span>
           <span></span>

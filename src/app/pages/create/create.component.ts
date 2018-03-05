@@ -6,27 +6,32 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 @Component({
   selector: 'app-create',
   template: `
-    <h1 class="title has-text-centered">
-      Create a gif!
-    </h1>
+    <main class="hero is-fullheight">
+      <div class="hero-body">
+        <div class="container">
+          <h1 class="title has-text-centered">
+            Create a gif!
+          </h1>
 
-    <div class="box">
-      
-      <app-gif
-        *ngIf="randomGif"
-        [url]="randomGif.url"
-        [caption]="caption">
-      </app-gif>
-      
-      <div class="field">
-        <input type="text" class="input" [(ngModel)]="caption">
+          <div class="box create__wrap">
+            
+            <app-gif
+              *ngIf="randomGif"
+              [url]="randomGif.url"
+              [caption]="caption">
+            </app-gif>
+            <a class="btn-refresh" (click)="getRandomGif()"><i class="fa fa-sync"></i></a>
+            <div class="field">
+              <input type="text" class="input" [(ngModel)]="caption">
+            </div>
+
+            <a class="button is-link" (click)="saveGif()">
+              Create!
+            </a>
+          </div>
+        </div>
       </div>
-
-      <a class="button is-link" (click)="saveGif()">
-        Create!
-      </a>
-    </div>
-
+    </main>
   `,
   styles: [`
     .box {

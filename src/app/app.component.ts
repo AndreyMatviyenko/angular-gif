@@ -5,15 +5,8 @@ import { Component } from '@angular/core';
   template: `
     <app-header></app-header>
 
-    <main class="hero is-fullheight">
-      <div class="hero-body">
-        <div class="container">
-
-          <flash-messages></flash-messages>
-          <router-outlet></router-outlet>
-        </div>
-      </div>
-    </main>
+    <flash-messages></flash-messages>
+    <router-outlet></router-outlet>
 
     <app-footer></app-footer>
   `,
