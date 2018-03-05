@@ -49,6 +49,12 @@ import { FlashMessagesService } from 'angular2-flash-messages';
       border-radius: 3px;
     }
 
+    @media only screen and (max-width : 767px) {
+      .box {
+        max-width: 400px;
+      }
+    }
+
   `]
 })
 export class CreateComponent implements OnInit {

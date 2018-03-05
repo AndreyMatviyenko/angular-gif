@@ -36,4 +36,9 @@ export class GifService {
     return this.http.get<Gif[]>(`${this.apiUrl}/leaderboard`);
   }
 
+  // HOME TOP LEADERS ==========================
+  // get
+  getTopLeader(): Observable<Gif[]> {
+    return this.http.get<Gif[]>(`${this.apiUrl}/top_5`);
+  }
 }
