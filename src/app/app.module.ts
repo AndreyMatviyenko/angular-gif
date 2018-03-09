@@ -10,6 +10,13 @@ import { CoreModule } from '@app/core/core.module';
 import { PagesModule } from '@app/pages/pages.module';
 import { FlashMessagesModule } from 'angular2-flash-messages';
 
+import { environment } from '../environments/environment';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+
+import { AuthService } from './services/auth.service';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -21,9 +28,12 @@ import { FlashMessagesModule } from 'angular2-flash-messages';
     HttpClientModule,
     CoreModule,
     PagesModule,
-    FlashMessagesModule.forRoot()
+    FlashMessagesModule.forRoot(),
+    AngularFireModule.initializeApp(environment.firebase, 'angular-auth-firebase'),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -9,7 +9,7 @@ import { FlashMessagesService } from 'angular2-flash-messages';
   <main class="hero is-fullheight">
     <div class="hero-body hero-battle">
       <div class="container">
-        <h1 class="title has-text-centered">Battle!</h1>
+        <h1 class="title has-text-centered">Выбери гифку!</h1>
     
         <div class="columns battle__wrap" *ngIf="battleGifs">
           <img class="battle__wrap--vs" src="assets/img/vs.svg">
@@ -20,6 +20,18 @@ import { FlashMessagesService } from 'angular2-flash-messages';
             </app-gif>
             <a class="button" (click)="voteOnGif(gif.id)"><i class="fa fa-thumbs-up"></i></a>
           </div>
+        </div>
+        <div class="has-text-centered">
+          <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+          <!-- gifsta-test -->
+          <ins class="adsbygoogle"
+              style="display:block"
+              data-ad-client="ca-pub-6079804098503978"
+              data-ad-slot="7032395918"
+              data-ad-format="auto"></ins>
+          <script>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
         </div>
       </div>
     </div>
@@ -52,7 +64,7 @@ export class BattleComponent implements OnInit {
         this.getNewBattle();
 
         // show a notification of success
-        this.flashService.show('Voted on gif!', {
+        this.flashService.show('Голос учтен!', {
           cssClass: 'notification is-success',
           timeout: 3000
         });
