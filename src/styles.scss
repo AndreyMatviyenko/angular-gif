@@ -1,7 +1,7 @@
 body {
     position: relative;
     min-height: 100vh;
-    padding:  52px 0px 0px;
+    padding:  0px 0px 0px;
 }
 
 .h1 {
@@ -12,6 +12,8 @@ body {
 }
 
 .hero {
+    position: relative;
+    overflow: hidden;
     background: #fff;
     color: #fff;
     .title {
@@ -33,6 +35,11 @@ body {
     .navbar-item img {
         max-height: 36px;
     }
+    .navbar-menu {
+        .icon {
+            margin-right: 7px;
+        }
+    }
 }
 
 .stripe-background {
@@ -47,7 +54,7 @@ body {
         position: absolute;
         width: 100%;
         height: 460%;
-        background: #000;
+        background: #3369e7;
         -ms-transform: skewY(-54deg) translate(0px, -80%);
         transform: skewY(-54deg) translate(0px, -80%);
         z-index: 0;
@@ -55,7 +62,7 @@ body {
     }
     &::after {
         height: 400%;
-        background: #000;
+        background: #3369e7;
         -ms-transform: skewY(-45deg) translate(0px, -90%);
         transform: skewY(-45deg) translate(0px, -90%);
         opacity: 0.1;
@@ -101,18 +108,19 @@ body {
         display: inline-block;
         margin: 50px auto 30px;
         color: #333;
-        overflow: hidden;
         line-height: 40px;
         height: 46px;
         border-radius: 22px;
-        padding: 2px 2px 2px 44px;
+        padding: 2px 44px 2px 44px;
         text-align: center;
         width: 100%;
         max-width: 250px;
         background-color: #fff;
         border-color: #fff;
         .btn-icon {
-            float: right;
+            position: absolute;
+            top: 2px;
+            right: 2px;
             display: block;
             line-height: 40px;
             text-align: center;
@@ -122,6 +130,7 @@ body {
             background-color: #89F8B0;
             border-radius: 50%;
             margin-left: 20px;
+            transition: all .3s ease;
         }
         .fa {
             line-height: 40px;
@@ -130,6 +139,7 @@ body {
 }
 
 .section--review {
+    padding: 6rem 1.5rem;
     position: relative;
     background-color: #f8faff;
 }
@@ -230,7 +240,7 @@ body {
 
 .section--randomGif {
     position: relative;
-    padding: 3rem 1.5rem;
+    padding: 6rem 1.5rem;
     .randomGif__wrap {
         padding: 50px 0;
         background-color: #333;
@@ -293,6 +303,7 @@ body {
 }
 
 .section--top {
+    padding: 6rem 1.5rem;
     background-color: #f8faff;
     .column {
         position: relative;
@@ -419,13 +430,15 @@ body {
 
 .battle__wrap {
     position: relative;
+    max-width: 900px;
+    margin: 0 auto;
     .battle__wrap--vs {
         position: absolute;
         top: 50%;
         left: 50%;
         width: 20%;
         transform: translate(-50%, -50%);
-        z-index: 99;
+        z-index: 9;
     }
     .battle__wrap--gif {
         position: relative;
@@ -456,9 +469,10 @@ body {
             border-radius: 50%;
             opacity: 0.9;
             display: none;
+            transition: all .3s ease;
             &:hover {
                 opacity: 1;
-                color: #7d469a;
+                transform: scale(1.2,1.2)
             }
         }
         &:hover {
@@ -498,13 +512,81 @@ body {
     }
 }
 
+.hero-login {
+    position: relative;
+    background-color: #00aeff;
+}
+
+.login-header {
+    position: relative;
+    padding: 20px;
+    max-width: 400px;
+    margin: auto;
+    background-color: #fff;
+    box-shadow: 0 40px 64px rgba(62,57,107,0.4), 0 20px 32px rgba(62,57,107,0.16);
+    color: #333;
+    border-radius: 6px;
+    .button {
+        margin-bottom: 20px;
+    }
+    &::before {
+        content: '';
+        display: block;
+        width: 100%;
+        height: 4px;
+        background-image: linear-gradient(to right, #8e43e7 0%, #3369e7 100%);
+        top: 0;
+        left: 0;
+        position: absolute;
+        border-top-left-radius: 6px;
+        border-top-right-radius: 6px;
+    }
+}
+
+.modal--auth {
+    .title {
+        font-size: 20px;
+        margin-top: 1em;
+    }
+    .modal-card {
+        position: relative;
+        max-width: 400px;
+        border-radius: 6px;
+        &::before {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 4px;
+            background-image: linear-gradient(to right, #8e43e7 0%, #3369e7 30%, #00aeff 100%);
+            top: 0;
+            left: 0;
+            position: absolute;
+            border-top-left-radius: 6px;
+            border-top-right-radius: 6px;
+        }
+    }
+    .modal-card-body {
+        .button {
+            margin: 25px 0;
+        }
+    }
+}
+
 // Footer
 
 .main-footer {
-    padding: 25px 15px;
     background-color: #fff;
-    border-top: 2px solid rgba(207,215,223,.25);
+    border-top: 1px solid rgba(207,215,223,.25);
     color: #8898aa;
+    .menu {
+        .menu-list {
+            list-style-type: none;
+            margin: 0;
+            li {
+                display: inline-block;
+            }
+        }
+    }
 }
 
 @media only screen and (max-width : 1199px) {
@@ -547,6 +629,27 @@ body {
         li {
             width: 50%;
         }
+    }
+
+    .main-footer {
+        .content {
+            text-align: center!important;
+        }
+    }
+}
+
+@media only screen and (max-width : 600px) {
+    .hero-home {
+        padding-top: 30px;
+        p {
+            font-size: 15px;
+            br {
+                display: none;
+            }
+        }
+    }
+    .h1 {
+        font-size: 28px;
     }
 }
 

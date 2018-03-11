@@ -24,38 +24,69 @@ import { Injectable } from '@angular/core';
         </div>
         <div class="navbar-menu" id="navMenu">
           <div class="navbar-end">
-            <a routerLink="battle" class="navbar-item">Битва</a>
-            <a routerLink="create" class="navbar-item">Создать</a>
-            <a routerLink="leaderboard" class="navbar-item">Лидеры</a>
-            <a *ngIf="userAuth; then btnLogout else btnLogin" class="navbar-item" (click)="toggleModalAuth()"></a>
+            <a routerLink="battle" class="navbar-item">
+              <span class="icon is-small">
+                <i class="fa fa-fighter-jet"></i>
+              </span>
+              <span>Битва</span>
+            </a>
+            <a routerLink="create" class="navbar-item">
+              <span class="icon is-small">
+                <i class="fa fa-plus-circle"></i>
+              </span>
+              <span>Создать</span>
+            </a>
+            <a routerLink="leaderboard" class="navbar-item">
+              <span class="icon is-small">
+                <i class="fa fa-star"></i>
+              </span>
+              <span>Лидеры</span>
+            </a>
+            <div class="navbar-item">
+              <a *ngIf="this.authService.isLoggedIn(); then btnLogout else btnLogin"></a>
+            </div>
             <ng-template #btnLogout>
-              <a class="navbar-item" (click)="toggleModalAuth()">Выйти</a>
+              <a class="button is-danger navbar-item" (click)="authService.logout()">
+                <span class="icon is-small">
+                  <i class="fa fa-sign-out"></i>
+                </span>
+                <span>Выйти</span>
+              </a>
             </ng-template>
             <ng-template #btnLogin>
-              <a class="navbar-item" (click)="toggleModalAuth()">Войти</a>
+              <a class="button is-success navbar-item" (click)="toggleModalAuth()">
+                <span class="icon is-small">
+                  <i class="fa fa-sign-in"></i>
+                </span>
+                <span>Войти</span>
+              </a>
             </ng-template>
           </div>
         </div>
       </div>
     </nav>
-
-    <div [class]="modalAuthOpen ? 'modal is-active' : 'modal'">
-      <div class="modal-background"></div>
+    <div [class]="modalAuthOpen ? 'modal modal--auth is-active' : 'modal modal--auth'">
+      <div class="modal-background" (click)="toggleModalAuth()"></div>
       <div class="modal-card">
-        <header class="modal-card-head">
-          <p class="modal-card-title">Вход/Регистрация</p>
-          <button class="delete" (click)="toggleModalAuth()"></button>
-        </header>
         <section class="modal-card-body">
           <div class="content">
-            <a class="button btn-block is-info is-rounded" (click)="signInWithGoogle()">
+            <p class="title is-3">Вход</p>
+            <p>Используйте социальную сеть, чтобы войти на сайт</p>
+            <a class="button is-block is-white is-rounded" (click)="signInWithGoogle()">
               <span class="icon is-small">
-                <i class="fab fa-google-plus"></i>
+                <i class="fa fa-google-plus"></i>
               </span>
               <span>Login with Google</span>
             </a>
+            <a class="button is-block is-info is-rounded" (click)="signInWithGoogle()">
+              <span class="icon is-small">
+                <i class="fa fa-facebook"></i>
+              </span>
+              <span>Login with Facebook</span>
+            </a>
           </div>
         </section>
+        <button class="modal-close is-large" aria-label="close"  (click)="toggleModalAuth()"></button>
       </div>
     </div>
 
@@ -67,7 +98,6 @@ import { Injectable } from '@angular/core';
 export class HeaderComponent implements OnInit {
   private user: Observable<firebase.User>;
   modalAuthOpen = false;
-  userAuth = false;
 
   constructor(
     private _firebaseAuth: AngularFireAuth,
@@ -80,7 +110,6 @@ export class HeaderComponent implements OnInit {
   signInWithGoogle() {
     this.authService.signInWithGoogle()
       .then((res) => {
-          console.log(res)
           this.router.navigate(['create'])
         })
       .catch((err) => console.log(err));
@@ -88,11 +117,9 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     if ( this.authService.isLoggedIn() ) {
-      this.userAuth = true;
       return true;
     }
     this.router.navigate(['/']);
-    this.userAuth = false;
     return false;
   }
 

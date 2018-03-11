@@ -3,30 +3,42 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-footer',
   template: `
-    <footer class="main-footer">
+    <footer class="footer main-footer">
       <div class="container">
         <div class="columns">
           <div class="column">
-            <div class="content has-text-left">
-              <p>
-                Made with <i class="fa fa-heart"></i> & <i class="fa fa-coffee"></i> in Ukraine
-              </p>
-            </div>
-          </div>
-          <div class="column">
-            <div class="content has-text-right">
-              <p>
-                Made with <i class="fa fa-heart"></i> & <i class="fa fa-coffee"></i> in Ukraine"
-              </p>
+            <div class="content has-text-centered">
+              <div class="menu">
+                <ul class="menu-list">
+                  <li>
+                    <a routerLink="contact">Контакты</a>
+                  </li>
+                  <li>
+                    <a routerLink="about">О проекте</a>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
       </div>
       <div class="container">
-        <div class="content has-text-centered">
-          <p>
-            © 2017 - Gifsta. All rights reserved
-          </p>
+        <div class="columns">
+          <div class="column has-text-centered">
+            <p>
+              Made with
+              <span class="icon has-text-danger">
+                <i class="fa fa-heart"></i>
+              </span> &
+              <span class="icon has-text-info">
+                <i class="fa fa-coffee"></i>
+              </span> 
+              in Ukraine
+            </p>
+            <p>
+              © 2017 - Gifsta. All rights reserved
+            </p>
+          </div>
         </div>
       </div>
     </footer>

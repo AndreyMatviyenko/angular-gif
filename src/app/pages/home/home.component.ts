@@ -12,7 +12,7 @@ import { Gif } from '@app/models/gif.model';
           <section class="home-header">
               <h1 class="h1 title">Создавай и участвуй в битве гифок!</h1>
               <p>
-                  Не знаешь чем заняться? Скучно? Нужно отвлечься?<br>Добро пожаловать!
+                  Не знаешь чем заняться? Скучно? Нужно отвлечься? <br>Добро пожаловать!
               </p>
               <a routerLink="battle" class="button">
                 Начать битву!
@@ -23,13 +23,13 @@ import { Gif } from '@app/models/gif.model';
       </div>
     </main>
     <section class="section section--create">
-      <h2 class="subtitle">Создай свою гифку!</h2>
+      <h2 class="title">Создай свою гифку!</h2>
       <p>И попробуй попасть в лидеры</p>
       <a routerLink="create"><div class="btn-icon"><i class="fa fa-arrow-right"></i></div></a>
     </section>
     <section class="section section--top">
       <div class="container">
-        <h2 class="subtitle has-text-centered">
+        <h2 class="subtitle is-3 is-2 has-text-centered">
           Топ 5 лидеров
         </h2>
         <div class="columns" *ngIf="topleaderGifs">
@@ -59,7 +59,7 @@ import { Gif } from '@app/models/gif.model';
     </section>
     <section class="section section--review">
       <div class="container">
-        <h2 class="subtitle has-text-centered">
+        <h2 class="subtitle is-3 has-text-centered">
           Отзывы
         </h2>
         <div class="columns">

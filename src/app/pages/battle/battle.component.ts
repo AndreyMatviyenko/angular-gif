@@ -18,7 +18,7 @@ import { FlashMessagesService } from 'angular2-flash-messages';
               [url]="gif.url"
               [caption]="gif.caption">
             </app-gif>
-            <a class="button" (click)="voteOnGif(gif.id)"><i class="fa fa-thumbs-up"></i></a>
+            <a class="button is-success" (click)="voteOnGif(gif.id)"><i class="fa fa-thumbs-up"></i></a>
           </div>
         </div>
         <div class="has-text-centered">
