@@ -6,7 +6,7 @@ import { Gif } from '@app/models/gif.model';
   selector: 'app-battle',
   template: `
     <main class="hero">
-      <div class="hero-body hero-home">
+      <div class="hero-body hero-home">5
         <!-- <div class="stripe-background"></div> -->
         <div class="container">
           <section class="home-header">
