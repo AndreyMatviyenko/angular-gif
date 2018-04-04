@@ -5,7 +5,7 @@ import { GifService } from '@app/core/services/gif.service';
 @Component({
   selector: 'app-leaderboard',
   template: `
-    <main class="hero is-fullheight">
+    <main class="hero is-fullheight">6
       <div class="hero-body hero-leader">
         <div class="container">
           <h1 class="title has-text-centered">Leaderboard</h1>
