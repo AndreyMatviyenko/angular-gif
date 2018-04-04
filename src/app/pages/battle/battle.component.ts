@@ -6,7 +6,7 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 @Component({
   selector: 'app-battle',
   template: `
-  <main class="hero is-fullheight">
+  <main class="hero is-fullheight">2
     <div class="hero-body hero-battle">
       <div class="container">
         <h1 class="title has-text-centered">Выбери гифку!</h1>
