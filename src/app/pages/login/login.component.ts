@@ -10,7 +10,7 @@ import { Injectable } from '@angular/core';
 @Component({
   selector: 'app-battle',
   template: `
-    <main class="hero is-fullheight">
+    <main class="hero is-fullheight">7
       <div class="hero-body hero-login">
         <div class="stripe-background"></div>
         <div class="container">
